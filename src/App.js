@@ -13,13 +13,13 @@ function App() {
 
   useEffect(() => {
       const fetchCategoryData = async () => {
-          const response = await fetch("/api/categories")
+          const response = await fetch(`${process.env.REACT_APP_FETCH_URI}api/categories`)
           const data = await response.json()
           setCategories(data);
       }
       fetchCategoryData();
       const fetchListData = async () => {
-        const response = await fetch("/api/lists/category/all")
+        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}api/lists/category/all`)
         const data = await response.json()
         setLists(data);
       }
