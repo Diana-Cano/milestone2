@@ -23,9 +23,9 @@ function Categories() {
     return (
         <>
             <div className="container">
-                {/* <img className="logo"
+                <img className="logo"
                 src={require("../img/logowithtagline.png")}
-                alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'fill your bucket before you kick it'."/> */}
+                alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'fill your bucket before you kick it'."/>
             </div>
             <div className="container">
                 {mapCategories}
