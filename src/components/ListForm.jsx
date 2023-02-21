@@ -17,7 +17,7 @@ function ListForm(props) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch('http://localhost:3001/api/lists', {
+            const response = await fetch('/api/lists', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
