@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+  // Build the Comment table in PostgreSQL
   Comment.init({
     comment_id: {
       type: DataTypes.INTEGER,

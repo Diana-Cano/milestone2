@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// Error page that displays when the page is not found
 function PageNotFound() {
     return (
         <div className="flex">

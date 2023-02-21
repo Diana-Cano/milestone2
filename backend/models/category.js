@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+  // Build the Category table in PostgreSQL
   Category.init({
     category_id: {
       type: DataTypes.INTEGER,

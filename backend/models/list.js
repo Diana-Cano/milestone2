@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+  // Build the List table in PostgreSQL
   List.init({
     list_id: {
       type: DataTypes.INTEGER,

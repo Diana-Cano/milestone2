@@ -7,7 +7,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { BsReply } from "react-icons/bs";
 import { MdOutlineDelete } from "react-icons/md";
 
-//Buttons to edit, reply, and delete for posts
+// Page where idea posts are rendered
 
 function ListPage(props) {
     const [replyClicked, setReplyClicked] = useState(false);
@@ -16,7 +16,7 @@ function ListPage(props) {
 
     useEffect(() => {
         const fetchCategory = async () => {
-            const response = await fetch(`/api/categories/${props.list.category_id}`)
+            const response = await fetch(`http://localhost:3001/api/categories/${props.list.category_id}`)
             const data = await response.json();
             setCategory(data);
         }
@@ -26,13 +26,13 @@ function ListPage(props) {
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        fetch(`/api/lists/${props.list.list_id}`, {
+        fetch(`http://localhost:3001/api/lists/${props.list.list_id}`, {
             method: "DELETE"
         })
         .then(res => res.json());
         navigate(`/${category.name}`);
     }
-
+    //Buttons to edit, reply, and delete for posts
     return (
         <>
             <Link className="container" to="/">
