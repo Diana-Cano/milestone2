@@ -16,7 +16,7 @@ function CommentForm(props) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch('http;//localhost;3001/api/comments', {
+            const response = await fetch('/api/comments', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
