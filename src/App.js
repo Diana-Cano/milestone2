@@ -12,14 +12,14 @@ function App() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-      const fetchCategoryData = async () => {
-          const response = await fetch("/api/categories")
+      const CategoryData = async () => {
+          const response = await fetch("http;//localhost;3001/api/categories")
           const data = await response.json()
           setCategories(data);
       }
       fetchCategoryData();
       const fetchListData = async () => {
-        const response = await fetch("/api/lists/category/all")
+        const response = await fetch("http;//localhost;3001/api/lists/category/all")
         const data = await response.json()
         setLists(data);
       }

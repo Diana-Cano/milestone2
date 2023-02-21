@@ -24,7 +24,7 @@ function Categories() {
         <>
             <div className="container">
                 <img className="logo"
-                src={"../img/logowithtagline.png"}
+                src={require("../img/logowithtagline.png")}
                 alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'fill your bucket before you kick it'."/>
             </div>
             <div className="container">
