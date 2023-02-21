@@ -13,7 +13,7 @@ function EditCommentForm(props) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch(`https://buck-it-back-end.vercel.app/api/comments/${comment.comment_id}`, {
+            const response = await fetch(`/api/comments/${comment.comment_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
