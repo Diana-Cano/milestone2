@@ -6,6 +6,7 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 const { Sequelize } = require("sequelize");
+require("./config/config");
 
 //configuration
 app.use(cors());
