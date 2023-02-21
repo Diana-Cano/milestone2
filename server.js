@@ -12,14 +12,14 @@ require("./config/config");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "../build")));
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 app.use("/api/categories", require("./controllers/categories_controller"));
 app.use("/api/lists", require("./controllers/lists_controller"));
 app.use("/api/comments", require("./controllers/comments_controller"));
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../build/index.html"));
+    res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
 });
 
 //listen
