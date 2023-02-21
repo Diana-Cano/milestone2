@@ -6,7 +6,7 @@ function Comments(props) {
 
     useEffect(() => {
         const fetchCommentData = async () => {
-            const response = await fetch(`/api/comments/${props.id}`)
+            const response = await fetch(`https://buck-it-back-end.vercel.app/api/comments/${props.id}`)
             const data = await response.json()
             setComments(data);
         }
@@ -18,7 +18,7 @@ function Comments(props) {
     let mapComments = comments.map((comment, index) => {
         const handleDelete = () => {
             window.location.reload();
-            fetch(`/api/comments/${comment.comment_id}`, {
+            fetch(`https://buck-it-back-end.vercel.app/api/comments/${comment.comment_id}`, {
                 method: "DELETE"
             })
             .then(res => res.json());

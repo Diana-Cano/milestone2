@@ -16,7 +16,7 @@ function ListPage(props) {
 
     useEffect(() => {
         const fetchCategory = async () => {
-            const response = await fetch(`/api/categories/${props.list.category_id}`)
+            const response = await fetch(`https://buck-it-back-end.vercel.app/api/categories/${props.list.category_id}`)
             const data = await response.json();
             setCategory(data);
         }
@@ -26,7 +26,7 @@ function ListPage(props) {
     const navigate = useNavigate();
 
     const handleDelete = () => {
-        fetch(`/api/lists/${props.list.list_id}`, {
+        fetch(`https://buck-it-back-end.vercel.app/api/lists/${props.list.list_id}`, {
             method: "DELETE"
         })
         .then(res => res.json());

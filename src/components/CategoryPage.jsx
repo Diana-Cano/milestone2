@@ -10,7 +10,7 @@ function CategoryPage(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`/api/lists/category/${props.category.category_id}`)
+            const response = await fetch(`https://buck-it-back-end.vercel.app/api/lists/category/${props.category.category_id}`)
             const data = await response.json()
             setLists(data);
         }

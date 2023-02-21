@@ -17,7 +17,7 @@ function ListForm(props) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch('/api/lists', {
+            const response = await fetch('https://buck-it-back-end.vercel.app/api/lists', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
