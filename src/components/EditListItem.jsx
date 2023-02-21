@@ -7,7 +7,7 @@ function EditListItem(props) {
 
     useEffect(() => {
         const fetchThisList = async () => {
-            const response = await fetch(`/api/lists/${props.id}`)
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${props.id}`)
             const data = await response.json();
             setList(data);
         }
@@ -18,7 +18,7 @@ function EditListItem(props) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch(`/api/lists/${list.list_id}`, {
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${list.list_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

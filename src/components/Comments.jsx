@@ -6,7 +6,7 @@ function Comments(props) {
 
     useEffect(() => {
         const fetchCommentData = async () => {
-            const response = await fetch(`/api/comments/${props.id}`)
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${props.id}`)
             const data = await response.json()
             setComments(data);
         }
@@ -18,7 +18,7 @@ function Comments(props) {
     let mapComments = comments.map((comment, index) => {
         const handleDelete = () => {
             window.location.reload();
-            fetch(`/api/comments/${comment.comment_id}`, {
+            fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
                 method: "DELETE"
             })
             .then(res => res.json());

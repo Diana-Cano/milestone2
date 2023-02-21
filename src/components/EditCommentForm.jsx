@@ -1,23 +1,20 @@
 import { useState, useEffect } from "react";
 
-//New Comment form. Where people can make new comments on posts. "reply"
-
-function CommentForm(props) {
-    const [comment, setComment] = useState({
-        comment: "",
-        list_id: 0
-    });
+function EditCommentForm(props) {
+    const [comment, setComment] = useState ([]);
+    const [clicked, setClicked] = useState(false);
+    };
 
     useEffect(() => {
-        setComment({list_id: props.id}) 
+        setComment({comment_id: props.id}) 
      }, []);
 
-    async function handleSubmit(e) {
+    async function handleEdit(e) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch('/api/comments', {
-                method: "POST",
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -35,13 +32,13 @@ function CommentForm(props) {
 
     return (
         <div className="container">
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="comment">New Comment</label>
+            <form onSubmit={handleEdit}>
+                <label htmlFor="comment">Edit comment</label>
                 <textarea id="comment" name="comment" cols="50" rows="3" maxLength="255" onChange={handleChange}></textarea>
-                <button type="submit">Submit</button>
+                <button type="submit">Save Changes</button>
             </form>
         </div>
-    )
-}
 
-export default CommentForm;
+    )
+
+export default EditCommentForm;
