@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Categories from "./components/Categories";
 import CategoryPage from "./components/CategoryPage";
@@ -13,13 +13,13 @@ function App() {
 
   useEffect(() => {
       const fetchCategoryData = async () => {
-          const response = await fetch("http://localhost:3001/api/categories")
+          const response = await fetch("/api/categories")
           const data = await response.json()
           setCategories(data);
       }
       fetchCategoryData();
       const fetchListData = async () => {
-        const response = await fetch("http://localhost:3001/api/lists/category/all")
+        const response = await fetch("/api/lists/category/all")
         const data = await response.json()
         setLists(data);
       }
