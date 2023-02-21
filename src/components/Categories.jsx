@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "../css/App.css";
 import CategoryContext from "../context/CategoryContext";
 
-//All the tombstones on the landing page 
+//function to create each category 
 
 function Categories() {
     const categories = useContext(CategoryContext);
@@ -19,7 +19,7 @@ function Categories() {
         </div>
         )
     });
-
+// Home page logo and render list of the category tombstones
     return (
         <>
             <div className="container">

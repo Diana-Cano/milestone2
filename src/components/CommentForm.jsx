@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-//New Comment form. Where people can make new comments on posts. "reply"
+//New Comment form. Where people can make new comments on posts. Rendered on Comments page when "reply" button is toggled
 
 function CommentForm(props) {
     const [comment, setComment] = useState({
