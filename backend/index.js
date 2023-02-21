@@ -7,6 +7,7 @@ const path = require("path");
 const cors = require("cors");
 const { Sequelize } = require("sequelize");
 require("./config/config");
+require("pg")
 
 //configuration
 app.use(cors());
