@@ -25,12 +25,13 @@ function ListPage(props) {
 
     const navigate = useNavigate();
 
-    const handleDelete = () => {
-        fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${props.list.list_id}`, {
+    const handleDelete = async () => {
+        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${props.list.list_id}`, {
             method: "DELETE"
         })
-        .then(res => res.json());
+        await response.json();
         navigate(`/${category.name}`);
+        window.location.reload();
     }
 
     return (
