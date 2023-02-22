@@ -16,7 +16,6 @@ function EditListItem(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-
         try {
             const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${list.list_id}`, {
                 method: "PUT",
@@ -25,7 +24,9 @@ function EditListItem(props) {
                 },
                 body: JSON.stringify(list)
             });
-            return await response.json();
+            await response.json();
+            window.location.reload();
+            return;
         } catch (error) {
             console.error(error);
         }

@@ -23,7 +23,9 @@ function CommentForm(props) {
                 },
                 body: JSON.stringify(comment)
             });
-            return await response.json();
+            await response.json();
+            window.location.reload();
+            return;
         } catch (error) {
             console.error(error);
         }

@@ -16,13 +16,13 @@ function Comments(props) {
 //deleting comments 
 
     let mapComments = comments.map((comment, index) => {
-        const handleDelete = () => {
-
-            fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
+        const handleDelete = async () => {
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
                 method: "DELETE"
             })
-            .then(res => res.json())
-            .catch(error => console.log(error))
+            await response.json();
+            window.location.reload();
+            return;
         }
 
         return (
