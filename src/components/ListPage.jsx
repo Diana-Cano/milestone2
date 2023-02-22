@@ -29,9 +29,10 @@ function ListPage(props) {
         const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${props.list.list_id}`, {
             method: "DELETE"
         })
-        await response.json();
+        await response.text();
         navigate(`/${category.name}`);
         window.location.reload();
+        return;
     }
 
     return (

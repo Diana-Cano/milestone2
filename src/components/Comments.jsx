@@ -21,7 +21,7 @@ function Comments(props) {
                 const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
                     method: "DELETE"
                 })
-                await response.json();
+                await response.text();
                 window.location.reload();
                 return;
             } catch(error) {
