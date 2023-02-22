@@ -10,7 +10,9 @@ require("./config/config");
 require("pg")
 
 //configuration
-app.use(cors());
+app.use(cors({
+    origin: "https://buck-it-seven.vercel.app"
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "./frontend/build")));
