@@ -14,7 +14,7 @@ function CommentForm(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        window.location.reload();
+
         try {
             const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments`, {
                 method: "POST",
@@ -25,7 +25,7 @@ function CommentForm(props) {
             });
             return await response.json();
         } catch (error) {
-            console.error("Error.");
+            console.error(error);
         }
     }
 

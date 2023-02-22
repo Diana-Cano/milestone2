@@ -17,11 +17,12 @@ function Comments(props) {
 
     let mapComments = comments.map((comment, index) => {
         const handleDelete = () => {
-            window.location.reload();
+
             fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
                 method: "DELETE"
             })
-            .then(res => res.json());
+            .then(res => res.json())
+            .catch(error => res.send(error))
         }
 
         return (
