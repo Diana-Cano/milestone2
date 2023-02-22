@@ -13,7 +13,7 @@ function EditCommentForm(props) {
         e.preventDefault();
         window.location.reload();
         try {
-            const response = await fetch(`http://localhost:3001/api/comments/${comment.comment_id}`, {
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"

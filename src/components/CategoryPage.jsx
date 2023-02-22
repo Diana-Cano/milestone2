@@ -10,7 +10,7 @@ function CategoryPage(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:3001/api/lists/category/${props.category.category_id}`)
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/category/${props.category.category_id}`)
             const data = await response.json()
             setLists(data);
         }
