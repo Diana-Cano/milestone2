@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 
 function EditCommentForm(props) {
     const [comment, setComment] = useState ([]);
-    const [clicked, setClicked] = useState(false);
-    };
 
     useEffect(() => {
         setComment({comment_id: props.id}) 
@@ -40,5 +38,6 @@ function EditCommentForm(props) {
         </div>
 
     )
+};
 
 export default EditCommentForm;
