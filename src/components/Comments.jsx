@@ -22,7 +22,7 @@ function Comments(props) {
                 method: "DELETE"
             })
             .then(res => res.json())
-            .catch(error => res.send(error))
+            .catch(error => console.log(error))
         }
 
         return (
