@@ -29,6 +29,7 @@ To use Buck-It!, browse through the categories for the types of activities you a
 * Express Version (https://expressjs.com/) 4.18.2
 * Sequelize Version (https://sequelize.org/) 6.28.0
 * Node-Postgres (https://www.npmjs.com/package/pg) Version 8.9.0
+* Deployed using Vercel   <span><img src="src/img/vercel-icon-dark.png" alt="Vercel" width="18px" height="18px" align="center"></span>  (https://vercel.com/)
 
 ## Collaborators:
 * Alice Weng
