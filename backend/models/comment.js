@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({List}) {
       Comment.belongsTo(List, {
-        foreignKey: "list_id"
+        foreignKey: "list_id",
+        onDelete: "cascade"
       });
     }
   }

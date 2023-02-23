@@ -15,7 +15,6 @@ function ListForm(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        window.location.reload();
         try {
             const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists`, {
                 method: "POST",
@@ -24,9 +23,11 @@ function ListForm(props) {
                 },
                 body: JSON.stringify(idea)
             });
-            return await response.json();
+            await response.json();
+            window.location.reload();
+            return;
         } catch (error) {
-            console.error("Error.");
+            console.error(error);
         }
     }
     const handleChange = e => {
