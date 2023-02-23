@@ -10,13 +10,13 @@ function Categories() {
 
     let mapCategories = categories.map((category, index) => {
         return (
-        <div key={index} className="tomb">
-            <img src={require(`../img/${category.name}.png`)} alt="A tomb that has RIP written on it."/>
-            <div>
-                <Link className="link" to={`/${category.name}`}><h1>❝{category.title}❞</h1></Link>
-                <p>{category.description}</p>
+            <div key={index} className="tomb">
+                <img src={require(`../img/${category.name}.png`)} alt="A tomb that has RIP written on it." />
+                <div>
+                    <Link className="link" to={`/${category.name}`}><h1>❝{category.title}❞</h1></Link>
+                    <p>{category.description}</p>
+                </div>
             </div>
-        </div>
         )
     });
 
@@ -24,8 +24,8 @@ function Categories() {
         <>
             <div className="container">
                 <img className="logo"
-                src={require("../img/logowithtagline.png")}
-                alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'fill your bucket before you kick it'."/>
+                    src={require("../img/logowithtagline.png")}
+                    alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'fill your bucket before you kick it'." />
             </div>
             <div className="container">
                 {mapCategories}

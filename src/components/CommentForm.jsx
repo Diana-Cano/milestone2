@@ -9,8 +9,8 @@ function CommentForm(props) {
     });
 
     useEffect(() => {
-        setComment({list_id: props.id}) 
-     }, []);
+        setComment({ list_id: props.id })
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -32,7 +32,7 @@ function CommentForm(props) {
     }
 
     const handleChange = e => {
-        setComment({...comment, [e.target.id]: e.target.value});
+        setComment({ ...comment, [e.target.id]: e.target.value });
     }
 
     return (

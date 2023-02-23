@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import{ MdOutlineDelete } from "react-icons/md"
+import { MdOutlineDelete } from "react-icons/md"
 
 function Comments(props) {
     const [comments, setComments] = useState([]);
@@ -13,7 +13,7 @@ function Comments(props) {
         fetchCommentData();
     }, []);
 
-//deleting comments 
+    //deleting comments 
 
     let mapComments = comments.map((comment, index) => {
         const handleDelete = async () => {
@@ -24,7 +24,7 @@ function Comments(props) {
                 await response.text();
                 window.location.reload();
                 return;
-            } catch(error) {
+            } catch (error) {
                 console.error(error);
             }
         }
@@ -33,9 +33,9 @@ function Comments(props) {
             <>
                 <div className="replies" key={index}>
                     <p>{comment.comment}</p>
-                    <button title="delete" onClick={handleDelete}><MdOutlineDelete/></button>
+                    <button title="delete" onClick={handleDelete}><MdOutlineDelete /></button>
                 </div>
-           </>
+            </>
         )
     });
 

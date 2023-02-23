@@ -7,6 +7,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --blue: #4361ee;
   --cyan: #4cc9f0;
@@ -17,15 +18,18 @@
   --lightpurple: #9f7af5;
   --almostblack: #202020;
 }
+
 body {
   color: white;
   background: #0c0c0c;
   font-family: "Inter", sans-serif;
 }
+
 p {
   padding: 1em;
   color: white;
 }
+
 .tomb {
   display: flex;
   text-align: center;
@@ -38,11 +42,13 @@ p {
   margin: 1em;
   position: relative;
 }
+
 .tomb img {
   height: auto;
   width: 12em;
   z-index: 1;
 }
+
 .tomb::before {
   content: "";
   position: absolute;
@@ -52,36 +58,46 @@ p {
   left: 1em;
   top: 1em;
 }
+
 .tomb:nth-child(1)::before {
   background-color: var(--hotpink);
 }
+
 .tomb:nth-child(2)::before {
   background-color: var(--lightpurple);
 }
+
 .tomb:nth-child(3)::before {
   background-color: var(--purple);
 }
+
 .tomb:nth-child(4)::before {
   background-color: var(--darkpurple);
 }
+
 .tomb:nth-child(5)::before {
   background-color: var(--blue);
 }
+
 .tomb:nth-child(6)::before {
   background-color: var(--cyan);
 }
+
 h1 {
   font-size: 1.5em;
   color: var(--green);
 }
+
 h2 {
   padding-top: .6em;
 }
+
 .link {
   text-decoration: none;
   color: var(--green);
   position: relative;
 }
+
 .link::before {
   content: "";
   position: absolute;
@@ -92,9 +108,11 @@ h2 {
   bottom: .7em;
   transition: 500ms;
 }
+
 .link:hover::before {
   width: 14em;
 }
+
 .container {
   padding: 1em;
   display: flex;
@@ -102,37 +120,45 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
 .logo {
   width: auto;
   height: 15em;
   width: 30em;
   margin-top: 1.5em;
 }
+
 form {
   padding: 0 2em;
   text-align: center;
   border-radius: .5em;
   background: var(--almostblack);
 }
+
 textarea {
   font-family: "Inter";
   resize: none;
 }
-label, textarea {
+
+label,
+textarea {
   display: block;
   padding: 1em;
 }
+
 input {
   width: 200px;
   height: 30px;
   padding: 1em;
 }
+
 button {
   margin: 1em;
   padding: .5em 1em;
   cursor: pointer;
   border-radius: 10px;
 }
+
 .item {
   background: var(--almostblack);
   border-radius: .5em;
@@ -157,10 +183,12 @@ button {
   text-align: center;
   font-size: 2.5em;
 }
+
 .error {
   width: 1000px;
   padding-top: 2.5em;
 }
+
 .flex {
   width: 1000px;
   margin: auto;
@@ -174,5 +202,5 @@ button {
   position: absolute;
   left: 5em;
   top: -5em;
-  
+
 }

@@ -12,29 +12,29 @@ function App() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
-      const fetchCategoryData = async () => {
-          const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/categories`)
-          const data = await response.json()
-          setCategories(data);
-      }
-      fetchCategoryData();
-      const fetchListData = async () => {
-        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/category/all`)
-        const data = await response.json()
-        setLists(data);
-      }
-      fetchListData();
+    const fetchCategoryData = async () => {
+      const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/categories`)
+      const data = await response.json()
+      setCategories(data);
+    }
+    fetchCategoryData();
+    const fetchListData = async () => {
+      const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/category/all`)
+      const data = await response.json()
+      setLists(data);
+    }
+    fetchListData();
   }, []);
 
   let mapCategoryPages = categories.map((category, index) => {
     return (
-        <Route key={index} path={`/${category.name}`} element={<CategoryPage category={category}/>}/>
+      <Route key={index} path={`/${category.name}`} element={<CategoryPage category={category} />} />
     )
   });
 
   let mapListPages = lists.map((list, index) => {
     return (
-      <Route key={index} path={`/:category/${list.list_id}`} element={<ListPage list={list}/>}/>
+      <Route key={index} path={`/:category/${list.list_id}`} element={<ListPage list={list} />} />
     )
   });
 
@@ -42,10 +42,10 @@ function App() {
     <CategoryContext.Provider value={categories}>
       <Router>
         <Routes>
-          <Route path="/" element={<Categories />}/>
+          <Route path="/" element={<Categories />} />
           {mapCategoryPages}
           {mapListPages}
-          <Route path="/*" element={<PageNotFound/>}/>
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </CategoryContext.Provider>

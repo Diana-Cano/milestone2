@@ -6,7 +6,7 @@ const { Comment } = db;
 
 router.get("/:id", (req, res) => {
     Comment.findAll({
-        where: {list_id: `${req.params.id}`},
+        where: { list_id: `${req.params.id}` },
         order: [["comment_id", "DESC"]]
     })
         .then(comments => {
@@ -33,10 +33,10 @@ router.post("/", (req, res) => {
 
 router.delete("/:id", (req, res) => {
     Comment.destroy({
-        where: {comment_id: `${req.params.id}`}
+        where: { comment_id: `${req.params.id}` }
     })
         .then(num => {
-            if(num == 1) {
+            if (num == 1) {
                 res.send("Comment has been successfully deleted.");
             } else {
                 res.send("Error: Couldn't delete comment.");

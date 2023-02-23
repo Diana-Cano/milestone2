@@ -39,25 +39,25 @@ function ListPage(props) {
         <>
             <Link className="container" to="/">
                 <img className="logo"
-                src={require("../img/home.png")}
-                alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'home'."/>
+                    src={require("../img/home.png")}
+                    alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'home'." />
             </Link>
-            { editClicked
-                ? <EditListItem id={props.list.list_id}/>
+            {editClicked
+                ? <EditListItem id={props.list.list_id} />
                 :
                 <div className="item">
                     <h2>{props.list.title}</h2>
                     <p>{props.list.list_item}</p>
-                    <button title="edit" id="edit" onClick={() => setEditClicked(!editClicked)}><AiOutlineEdit/></button>
-                    <button title="reply" id="reply" onClick={() => setReplyClicked(!replyClicked)}><BsReply/></button>
-                    <button title="delete" onClick={handleDelete}><MdOutlineDelete/></button>
+                    <button title="edit" id="edit" onClick={() => setEditClicked(!editClicked)}><AiOutlineEdit /></button>
+                    <button title="reply" id="reply" onClick={() => setReplyClicked(!replyClicked)}><BsReply /></button>
+                    <button title="delete" onClick={handleDelete}><MdOutlineDelete /></button>
                 </div>
             }
-            {replyClicked ? <CommentForm id={props.list.list_id}/> 
+            {replyClicked ? <CommentForm id={props.list.list_id} />
                 : null
             }
             <div className="comments">
-                <Comments id={props.list.list_id}/>
+                <Comments id={props.list.list_id} />
             </div>
         </>
     )

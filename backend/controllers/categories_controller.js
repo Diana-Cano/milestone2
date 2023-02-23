@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     Category.findOne({
-        where: {category_id: `${req.params.id}`}
+        where: { category_id: `${req.params.id}` }
     })
         .then(category => {
             res.json(category);
