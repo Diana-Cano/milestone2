@@ -2,9 +2,15 @@ import { Link } from "react-router-dom";
 
 function PageNotFound() {
     return (
-        <div className="flex">
-            <img className="error" src={require("../img/404.png")} alt="A rain cloud over an empty bucket and the words 'Oh no! This bucket is empty! 404" />
-            <Link to="/"><img className="home" src={require("../img/404-home.png")} alt="A rainbow that says 'take me home'." /></Link>
+        <div className="error">
+            <div>
+                <div>
+                    <Link to="/" >
+                        <img src={require("../img/takemehome.png")} alt="A rainbow that takes you back to the home page."/>
+                    </Link>
+                </div>
+                <img src={require("../img/404.png")} alt="A rain cloud over an empty bucket. Error 404, page not found."/>
+            </div>
         </div>
     )
 }

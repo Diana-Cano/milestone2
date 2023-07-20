@@ -1,13 +1,9 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../css/App.css";
-import CategoryContext from "../context/CategoryContext";
 
 //All the tombstones on the landing page 
 
-function Categories() {
-    const categories = useContext(CategoryContext);
-
+function Categories({categories}) {
     let mapCategories = categories.map((category, index) => {
         return (
             <div key={index} className="tomb">

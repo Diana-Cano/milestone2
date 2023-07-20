@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 :root {
   --blue: #4361ee;
   --cyan: #4cc9f0;
@@ -184,11 +181,6 @@ button {
   font-size: 2.5em;
 }
 
-.error {
-  width: 1000px;
-  padding-top: 2.5em;
-}
-
 .flex {
   width: 1000px;
   margin: auto;
@@ -198,9 +190,31 @@ button {
   position: relative;
 }
 
-.home {
+/* PageNotFound.jsx */
+.error {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.error div {
+  position: relative;
+}
+.error div div {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  display: flex;
   position: absolute;
-  left: 5em;
-  top: -5em;
-
+  justify-content: center;
+}
+.error img:nth-child(1) {
+  width: auto;
+  height: 100%;
+}
+.error img:nth-child(2) {
+  max-width: 100vw;
+  max-height: 100vh;
 }

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Categories from "./components/Categories";
 import CategoryPage from "./components/CategoryPage";
-import CategoryContext from "./context/CategoryContext";
 import ListPage from "./components/ListPage";
 import PageNotFound from "./components/PageNotFound";
 
@@ -26,29 +25,27 @@ function App() {
     fetchListData();
   }, []);
 
-  let mapCategoryPages = categories.map((category, index) => {
+  let categoryRoutes = categories.map((category, index) => {
     return (
-      <Route key={index} path={`/${category.name}`} element={<CategoryPage category={category} />} />
+      <Route key={index} path={`/${category.name}`} element={<CategoryPage category={category}/>}/>
     )
   });
 
-  let mapListPages = lists.map((list, index) => {
+  let listRoutes = lists.map((list, index) => {
     return (
-      <Route key={index} path={`/:category/${list.list_id}`} element={<ListPage list={list} />} />
+      <Route key={index} path={`/:category/${list.list_id}`} element={<ListPage list={list}/>}/>
     )
   });
 
   return (
-    <CategoryContext.Provider value={categories}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Categories />} />
-          {mapCategoryPages}
-          {mapListPages}
-          <Route path="/*" element={<PageNotFound />} />
-        </Routes>
-      </Router>
-    </CategoryContext.Provider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Categories categories={categories}/>}/>
+        {categoryRoutes}
+        {listRoutes}
+        <Route path="/*" element={<PageNotFound/>}/>
+      </Routes>
+    </Router>
   );
 }
 
