@@ -33,7 +33,7 @@ function CategoryPage(props) {
                     src={require("../img/home.png")}
                     alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'home'." />
             </Link>
-            <h1 className="cat-title">❝{props.category.title}❞</h1>
+            <h1>❝{props.category.title}❞</h1>
             <div className="flex">
                 <button onClick={() => setClicked(!clicked)}>I have a new idea!</button></div>
             {clicked

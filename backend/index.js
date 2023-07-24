@@ -11,7 +11,7 @@ require("pg")
 
 //configuration
 app.use(cors({
-    origin: "https://buck-it-seven.vercel.app"
+    //origin: "https://buck-it-seven.vercel.app",
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

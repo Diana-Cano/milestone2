@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -8,121 +7,120 @@
 :root {
   --blue: #4361ee;
   --cyan: #4cc9f0;
-  --green: #99CC63;
+  --green: #99cc63;
   --purple: #7209b7;
+  --yellow: #e9de89;
   --hotpink: #f72585;
   --darkpurple: #3a0ca3;
   --lightpurple: #9f7af5;
-  --almostblack: #202020;
 }
-
 body {
-  color: white;
   background: #0c0c0c;
-  font-family: "Inter", sans-serif;
+  text-shadow: 0 0 .1em var(--green);
+  font-family: "Averia Serif Libre", cursive;
 }
-
-p {
-  padding: 1em;
-  color: white;
-}
-
-.tomb {
+main {
   display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  margin: 1em;
+  display: flex;
+  max-width: 500px;
+  margin-bottom: 0;
+}
+h1 img {
+  width: 100%;
+}
+p {
+  color: white;
+  padding-top: .5em;
+}
+nav {
+  margin: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tomb {
+  margin: .5em;
+  padding: 1em;
+  display: flex;
+  max-width: 500px;
+  position: relative;
   text-align: center;
   align-items: center;
-  justify-content: center;
-  background: var(--almostblack);
-  border-radius: .5em;
-  max-width: 500px;
-  padding: 1em;
-  margin: 1em;
-  position: relative;
+  background: #191919;
+  border: 1px dashed #4d4d4d;
 }
-
 .tomb img {
-  height: auto;
-  width: 12em;
   z-index: 1;
+  width: 12em;
+  height: auto;
 }
-
 .tomb::before {
   content: "";
   position: absolute;
   border-radius: 50%;
   height: 11em;
   width: 11em;
-  left: 1em;
   top: 1em;
 }
-
+@media (max-width: 500px) {
+  .tomb {
+    flex-direction: column;
+  }
+  .tomb::before {
+    margin-right: 1em;
+  }
+  .tomb img {
+    margin-bottom: .5em;
+  }
+}
 .tomb:nth-child(1)::before {
   background-color: var(--hotpink);
 }
-
 .tomb:nth-child(2)::before {
   background-color: var(--lightpurple);
 }
-
 .tomb:nth-child(3)::before {
   background-color: var(--purple);
 }
-
 .tomb:nth-child(4)::before {
   background-color: var(--darkpurple);
 }
-
 .tomb:nth-child(5)::before {
   background-color: var(--blue);
 }
-
 .tomb:nth-child(6)::before {
   background-color: var(--cyan);
 }
-
-h1 {
-  font-size: 1.5em;
+a {
   color: var(--green);
-}
-
-h2 {
-  padding-top: .6em;
-}
-
-.link {
   text-decoration: none;
-  color: var(--green);
+}
+h2 {
+  font-size: 1.75em;
+}
+h2 a {
   position: relative;
 }
-
-.link::before {
+h2 a::before {
   content: "";
   position: absolute;
-  background: var(--green);
-  height: 2px;
+  box-shadow: 0 0 1em var(--yellow);
+  background: var(--yellow);
+  border-radius: 1em;
+  transition: 400ms;
+  height: 3px;
+  top: .58em;
   width: 0;
-  left: -7em;
-  bottom: .7em;
-  transition: 500ms;
 }
-
-.link:hover::before {
-  width: 14em;
-}
-
-.container {
-  padding: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  width: auto;
-  height: 15em;
-  width: 30em;
-  margin-top: 1.5em;
+h2 a:hover::before {
+  width: 100%;
 }
 
 form {
@@ -133,7 +131,6 @@ form {
 }
 
 textarea {
-  font-family: "Inter";
   resize: none;
 }
 
@@ -176,45 +173,33 @@ button {
   border-color: lightslategray;
 }
 
-.cat-title {
-  text-align: center;
-  font-size: 2.5em;
-}
-
-.flex {
-  width: 1000px;
-  margin: auto;
+.error404 {
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
 }
-
-/* PageNotFound.jsx */
-.error {
-  height: 100vh;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-.error div {
-  position: relative;
-}
-.error div div {
+.error404 div {
   top: 0;
   left: 0;
   right: 0;
-  height: 42%;
+  height: 40%;
   display: flex;
   position: absolute;
   justify-content: center;
 }
-.error img:nth-child(1) {
+.error404 img:nth-child(1) {
   width: auto;
   height: 100%;
 }
-.error img:nth-child(2) {
-  max-width: 100vw;
+.error404 img:nth-child(2) {
+  width: 100%;
   max-height: 100vh;
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  color: aliceblue;
+  clip-path: inset(1px 1px);
 }
