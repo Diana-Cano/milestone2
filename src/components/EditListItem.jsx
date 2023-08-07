@@ -2,18 +2,7 @@ import { useState, useEffect } from "react";
 
 //Edit functionality for posts 
 
-function EditListItem(props) {
-    const [list, setList] = useState([]);
-
-    useEffect(() => {
-        const fetchThisList = async () => {
-            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${props.id}`)
-            const data = await response.json();
-            setList(data);
-        }
-        fetchThisList();
-    }, []);
-
+function EditListItem() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {

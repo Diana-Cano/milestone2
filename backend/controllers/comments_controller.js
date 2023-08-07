@@ -3,7 +3,6 @@ const db = require("../models");
 const { Comment } = db;
 
 // GET route for all comments related to a specific list.
-
 router.get("/:id", (req, res) => {
     Comment.findAll({
         where: { list_id: `${req.params.id}` },
@@ -18,7 +17,6 @@ router.get("/:id", (req, res) => {
 });
 
 // POST route for new comments.
-
 router.post("/", (req, res) => {
     Comment.create(req.body)
         .then(data => {
@@ -30,7 +28,6 @@ router.post("/", (req, res) => {
 });
 
 // DELETE route for a specific comment.
-
 router.delete("/:id", (req, res) => {
     Comment.destroy({
         where: { comment_id: `${req.params.id}` }

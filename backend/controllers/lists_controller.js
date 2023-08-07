@@ -16,31 +16,14 @@ router.get("/:id", (req, res) => {
         });
 });
 
-// GET route for all lists.
-
-router.get("/category/all", (req, res) => {
-    List.findAll()
-        .then(lists => {
-            res.json(lists);
-        })
-        .catch(() => {
-            res.send("Error: Couldn't find all lists.");
-        })
-});
-
-// GET route for all lists related to a specific category.
-
+// GET route for all lists of one category.
 router.get("/category/:id", (req, res) => {
     List.findAll({
         where: { category_id: `${req.params.id}` },
         order: [["list_id", "DESC"]]
     })
-        .then(lists => {
-            res.json(lists);
-        })
-        .catch(() => {
-            res.send("Error: Couldn't find lists.");
-        });
+        .then(lists => res.json(lists))
+        .catch(() => res.send("Error: Couldn't find lists."));
 });
 
 // POST route for new lists.

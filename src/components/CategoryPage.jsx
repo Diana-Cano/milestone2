@@ -1,47 +1,63 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import ListForm from './ListForm';
+import { Link, useParams } from "react-router-dom";
+import ListForm from "./ListForm";
 
-//Posts page. Where different user created posts can be seen and new posts can be created.
-
-function CategoryPage(props) {
-    const [clicked, setClicked] = useState(false);
+function CategoryPage() {
+    const [form, setForm] = useState(false);
+    const [category, setCategory] = useState({});
     const [lists, setLists] = useState([]);
+    
+    const { name } = useParams();
+
+    const fetchCategory = async () => {
+        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/categories/${name}`);
+        const data = await response.json();
+        setCategory(data);
+    }
+    const fetchLists = async () => {
+        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/category/${category.category_id}`);
+        const data = await response.json();
+        setLists(data);
+    }
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/category/${props.category.category_id}`)
-            const data = await response.json()
-            setLists(data);
-        }
-        fetchData();
+        fetchCategory();
     }, []);
 
+    useEffect(() => {
+        if(Object.keys(category).length) {
+            fetchLists();
+        }
+    }, [category]);
+
     let mapLists = lists.map((list, index) => {
+        console.log(list)
         return (
-            <div className="item" key={index}>
-                <Link className="link" to={`/${props.category.name}/${list.list_id}`}><h2>{list.title}</h2></Link>
+            <div key={index}>
+                <h2>
+                    <Link to={`${list.list_id}`}>{list.title}</Link> 
+                </h2>
                 <p>{list.list_item}</p>
             </div>
         )
     });
 
     return (
-        <>
-            <Link className="container" to="/">
-                <img className="logo"
-                    src={require("../img/home.png")}
-                    alt="Buck-It's logo, a bucket with a rainbow coming out of it saying 'home'." />
-            </Link>
-            <h1>❝{props.category.title}❞</h1>
-            <div className="flex">
-                <button onClick={() => setClicked(!clicked)}>I have a new idea!</button></div>
-            {clicked
-                ? <ListForm id={props.category.category_id} />
-                : null
-            }
-            {mapLists}
-        </>
+        <main>
+            <div className="container">
+                <Link to="/">
+                    <img src={require("../img/home.png")} alt="Return to home page."/>
+                </Link>
+            </div>
+            <h1>{category.title}</h1>
+            <button onClick={() => setForm(!form)}>I have a new idea!</button>
+            { form
+                ? <ListForm id={category.category_id} setForm={setForm} setLists={setLists} fetchLists={fetchLists}/>
+                : null }
+            <div className="list">
+                {mapLists}
+            </div>
+        </main>
     )
 }
 
