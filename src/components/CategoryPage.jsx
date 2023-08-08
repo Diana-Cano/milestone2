@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import ListForm from "./ListForm";
 
 function CategoryPage() {
-    const [form, setForm] = useState(false);
+    const [create, setCreate] = useState(false);
     const [category, setCategory] = useState({});
     const [lists, setLists] = useState([]);
     
@@ -31,7 +31,6 @@ function CategoryPage() {
     }, [category]);
 
     let mapLists = lists.map((list, index) => {
-        console.log(list)
         return (
             <div key={index}>
                 <h2>
@@ -50,9 +49,9 @@ function CategoryPage() {
                 </Link>
             </div>
             <h1>{category.title}</h1>
-            <button onClick={() => setForm(!form)}>I have a new idea!</button>
-            { form
-                ? <ListForm id={category.category_id} setForm={setForm} setLists={setLists} fetchLists={fetchLists}/>
+            <button onClick={() => setCreate(!create)}>I have a new idea!</button>
+            { create
+                ? <ListForm id={category.category_id} setCreate={setCreate} setLists={setLists} fetchLists={fetchLists}/>
                 : null }
             <div className="list">
                 {mapLists}

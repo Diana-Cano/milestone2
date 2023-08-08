@@ -9,18 +9,17 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ List }) {
+    static associate({List}) {
       Comment.belongsTo(List, {
-        foreignKey: "list_id",
-        onDelete: "cascade"
+        foreignKey: "list_id"
       });
     }
   }
   Comment.init({
     comment_id: {
-      type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      type: DataTypes.INTEGER
     },
     comment: {
       type: DataTypes.STRING,
@@ -28,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Comment',
+    modelName: "Comment",
     tableName: "comments",
     timestamps: false
   });

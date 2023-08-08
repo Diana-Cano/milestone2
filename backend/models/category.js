@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ List }) {
+    static associate({List}) {
       Category.hasMany(List, {
         foreignKey: "category_id"
       });
@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   Category.init({
     category_id: {
-      type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      type: DataTypes.INTEGER
     },
     title: {
       type: DataTypes.STRING,
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'Category',
+    modelName: "Category",
     tableName: "categories",
     timestamps: false
   });

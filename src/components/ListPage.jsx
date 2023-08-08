@@ -1,19 +1,28 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Comments from "./Comments";
-import CommentForm from "./CommentForm";
 import EditListItem from "./EditListItem";
-import { AiOutlineEdit } from "react-icons/ai";
+import CommentForm from "./CommentForm";
 import { BsReply } from "react-icons/bs";
+import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
 
 function ListPage() {
-    const [replyClicked, setReplyClicked] = useState(false);
-    const [editClicked, setEditClicked] = useState(false);
+    const [reply, setReply] = useState(false);
+    const [edit, setEdit] = useState(false);
     const [list, setList] = useState({});
+    const [comments, setComments] = useState([]);
 
     const { name, id } = useParams();
+
     const navigate = useNavigate();
+
+    const handleDelete = async () => {
+        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${id}`, {
+            method: "DELETE"
+        });
+        await response.text();
+        navigate(`/${name}`);
+    }
 
     const fetchList = async () => {
         const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${id}`);
@@ -21,41 +30,63 @@ function ListPage() {
         setList(data);
     }
 
-    const handleDelete = async () => {
-        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/lists/${list.list_id}`, {
-            method: "DELETE"
-        })
-        await response.text();
-        navigate(`/${name}`);
+    const fetchComments = async () => {
+        const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${id}`);
+        const data = await response.json();
+        setComments(data);
     }
 
     useEffect(() => {
         fetchList();
+        fetchComments();
     }, []);
+
+    let mapComments = comments.map((comment, index) => {
+        const handleDelete = async () => {
+            const response = await fetch(`${process.env.REACT_APP_FETCH_URI}/api/comments/${comment.comment_id}`, {
+                method: "DELETE"
+            });
+            await response.text();
+            setComments(comments.filter(comment => comment !== comments[index]));
+        }
+
+        return (
+            <div key={index}>
+                <p>{comment.comment}</p>
+                <button aria-label="delete" onClick={handleDelete}>
+                    <MdOutlineDelete aria-hidden="true"/>
+                </button>
+            </div>
+        )
+    });
 
     return (
         <main>
             <div className="container">
-                <Link to="/">
-                    <img src={require("../img/home.png")} alt="Return to home page."/>
+                <Link to={`/${name}`}>
+                    <img src={require("../img/home.png")} alt="Return to previous page."/>
                 </Link>
             </div>
-            {editClicked
-                ? <EditListItem/>
-                :
-                <div className="item">
-                    <h2>{list.title}</h2>
+            { edit
+                ? <EditListItem list={list} setList={setList} setEdit={setEdit}/>
+                : <div>
+                    <h1>{list.title}</h1>
                     <p>{list.list_item}</p>
-                    <button title="edit" id="edit" onClick={() => setEditClicked(!editClicked)}><AiOutlineEdit /></button>
-                    <button title="reply" id="reply" onClick={() => setReplyClicked(!replyClicked)}><BsReply /></button>
-                    <button title="delete" onClick={handleDelete}><MdOutlineDelete /></button>
-                </div>
-            }
-            {replyClicked ? <CommentForm id={list.list_id} />
-                : null
-            }
+                    <button aria-label="edit" onClick={() => setEdit(!edit)}>
+                        <AiOutlineEdit aria-hidden="true"/>
+                    </button>
+                    <button aria-label="reply" onClick={() => setReply(!reply)}>
+                        <BsReply aria-hidden="true"/>
+                    </button>
+                    <button aria-label="delete" onClick={handleDelete}>
+                        <MdOutlineDelete aria-hidden="true"/>
+                    </button>
+                 </div> }
+            { reply
+                ? <CommentForm id={id} setReply={setReply} setComments={setComments} fetchComments={fetchComments}/>
+                : null }
             <div className="comments">
-                <Comments id={list.list_id} />
+                {mapComments}
             </div>
         </main>
     )
